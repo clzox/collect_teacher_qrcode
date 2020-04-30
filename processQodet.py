@@ -12,7 +12,7 @@ path = r'C:\Users\cheny\Desktop\教师随申码收集'
 sf = searchfile.Searchfile(path, target=['.xlsx'])
 # 开始搜索文件
 sf.search_file()
-# 把搜索结果返回并赋值给指定列表423
+# 把搜索结果返回并赋值给指定列表
 file_list = sf.get_file(mode=2)
 print(file_list)
 # excel 转换成dataframe
