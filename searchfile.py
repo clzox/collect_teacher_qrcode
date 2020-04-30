@@ -22,6 +22,7 @@ class Myexception(Exception):
 
 class Searchfile:
     def __init__(self, path, target):
+        self.orign = os.getcwd()
         self.path = path
         self.target = target
         self.mode = 1
@@ -45,7 +46,7 @@ class Searchfile:
                     # 以文件名以及文件名所在的当前文件夹存储为键值对放在一个列表中
                     # os.path.abspath('.') 返回当前目录的绝对路径
                     # os.path.abspath('..') 返回上级目录的绝对路径
-                    self.file_name_rel_path_list[eachfile] = os.getcwd().replace(os.path.abspath('..'), '.', 1)[2:]
+                    self.file_name_rel_path_list[eachfile] = os.getcwd().replace(os.path.abspath('..'), '', 1)[1:]
             if os.path.isdir(eachfile):
                 self.path = eachfile
                 # 递归调用
@@ -55,12 +56,17 @@ class Searchfile:
 
     def get_file(self, mode=1):
         if mode == 1:
+            os.chdir(self.orign)
             return self.file_name_list
+
         elif mode == 2:
+            os.chdir(self.orign)
             return self.file_name_abs_path_list
         elif mode == 3:
+            os.chdir(self.orign)
             return self.file_name_rel_path_list
         else:
+            os.chdir(self.orign)
             # 其他字符则引起错误并抛出错误
             raise Myexception()
 
