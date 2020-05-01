@@ -16,10 +16,10 @@ sf.search_file()
 file_list = sf.get_file(mode=2)
 print(file_list)
 # excel 转换成dataframe
-teacher_list = pd.read_excel(r'C:\Users\cheny\Desktop\teacher_name.xlsx', index_col='教师姓名')
+teacher_list = pd.read_excel('teacher_name.xlsx', index_col='教师姓名')
 # 给dataframe添加一行名为xin 的空列
 # teacher_list['xin'] = None
-print(teacher_list)
+# print(teacher_list)
 for file in file_list:
     # 确定列名
     column_name = os.path.splitext(file)[0].split('\\')[-1]
@@ -27,7 +27,7 @@ for file in file_list:
     # excel转换成dataframe
     exist_teacher = pd.read_excel(file, index_col='教师姓名')
     # exist_teacher.set_index('教师姓名')
-    print(exist_teacher)
+    # print(exist_teacher)
     # 关闭解释器的异常检测
     # noinspection PyBroadException
     try:
